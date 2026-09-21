@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MealBuddy - Notifications</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'delivery/notification.css' %}"
+    >
+
+</head>
+
+<body>
+
+<div class="notification-page">
+
+    <div class="notification-card">
+
+        <div class="notification-header">
+
+            <div class="notification-icon">
+                📋
+            </div>
+
+            <h1>Notification History</h1>
+
+            <p>
+                View notifications sent to customers ✨
+            </p>
+
+        </div>
+
+
+        <div class="notification-list">
+
+            {% for notification in notifications %}
+
+            <div class="notification-item">
+
+                <div class="notification-item-top">
+
+                    <h2>
+                        {{ notification.title }}
+                    </h2>
+
+                    {% if notification.notification_type == "Promotion" %}
+
+                        <span class="type promotion">
+                            📣 Promotion
+                        </span>
+
+                    {% elif notification.notification_type == "Order Update" %}
+
+                        <span class="type order">
+                            📦 Order Update
+                        </span>
+
+                    {% else %}
+
+                        <span class="type festival">
+                            🎉 Festival Offer
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <p class="notification-message">
+                    {{ notification.message }}
+                </p>
+
+
+                <div class="notification-details">
+
+                    <span>
+                        👤 {{ notification.customer.username }}
+                    </span>
+
+                    <span>
+                        🕐 {{ notification.created_at|date:"d M Y, h:i A" }}
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="{% url 'delete_notification' notification.id %}"
+                    class="delete-notification"
+                    onclick="return confirm('Delete this notification?');"
+                >
+                    🗑️ Delete
+                </a>
+
+            </div>
+
+            {% empty %}
+
+            <div class="empty-notification">
+
+                <div>
+                    📭
+                </div>
+
+                <h2>
+                    No Notifications Yet
+                </h2>
+
+                <p>
+                    Send your first notification to customers.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <a
+            href="{% url 'open_add_notification' %}"
+            class="history-link"
+        >
+            📢 Send New Notification
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

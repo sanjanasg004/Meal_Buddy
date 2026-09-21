@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MealBuddy - Notifications</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'delivery/notification.css' %}"
+    >
+
+</head>
+
+<body>
+
+<div class="notification-page">
+
+    <div class="notification-card">
+
+        <!-- HEADER -->
+
+        <div class="notification-header">
+
+            <div class="notification-icon">
+                📢
+            </div>
+
+            <h1>Send Notification</h1>
+
+            <p>
+                Send updates and offers to your customers 💜
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            method="POST"
+            action="{% url 'add_notification' %}"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+
+                <label for="title">
+                    Notification Title
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="e.g. 🎉 Independence Day Offer"
+                    required
+                >
+
+            </div>
+
+
+            <!-- TYPE -->
+
+            <div class="form-group">
+
+                <label for="notification_type">
+                    Notification Type
+                </label>
+
+                <select
+                    id="notification_type"
+                    name="notification_type"
+                    required
+                >
+
+                    <option
+                        value=""
+                        disabled
+                        selected
+                    >
+                        Select notification type
+                    </option>
+
+                    <option value="Promotion">
+                        📣 Promotional Message
+                    </option>
+
+                    <option value="Order Update">
+                        📦 Order Update
+                    </option>
+
+                    <option value="Festival Offer">
+                        🎉 Festival Offer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div class="form-group">
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your notification message..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- RECIPIENT -->
+
+            <div class="recipient-box">
+
+                <span class="recipient-icon">
+                    👥
+                </span>
+
+                <div>
+
+                    <strong>
+                        All Customers
+                    </strong>
+
+                    <small>
+                        This notification will be sent to all registered customers.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="send-btn"
+            >
+                📤 Send Notification
+            </button>
+
+        </form>
+
+
+        <!-- HISTORY -->
+
+        <a
+            href="{% url 'show_notifications' %}"
+            class="history-link"
+        >
+            📋 View Notification History
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

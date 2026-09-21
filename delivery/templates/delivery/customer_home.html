@@ -1,0 +1,174 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MealBuddy - Restaurants</title>
+
+<link rel="stylesheet" href="{% static 'delivery/customer.css' %}">
+
+
+</head>
+
+<body>
+
+
+<div class="page-container">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+            🍴 <span>MealBuddy</span>
+        </div>
+
+        <div class="user-area">
+            <span>Hey,</span>
+            <strong>{{ username }} 💜</strong>
+        </div>
+
+    </header>
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <div>
+
+            <span class="welcome-tag">
+                ✨ Hungry?
+            </span>
+
+            <h1>
+                What are you craving today?
+            </h1>
+
+            <p>
+                Discover delicious food from restaurants around you 🍕🍔🍜
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANTS -->
+
+    <section class="restaurants-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>Explore Restaurants 🍽️</h2>
+
+                <p>
+                    Find your next favourite meal
+                </p>
+
+            </div>
+
+            <span class="restaurant-count">
+                {{ restaurantList|length }} Restaurants
+            </span>
+
+        </div>
+
+
+        <div class="restaurant-grid">
+
+            {% for r in restaurantList %}
+
+            <div class="restaurant-card">
+
+                <!-- IMAGE -->
+
+                <div class="image-container">
+
+                    <img
+                        src="{{ r.picture }}"
+                        alt="{{ r.name }}"
+                    >
+
+                    <span class="rating">
+                        ⭐ {{ r.rating }}
+                    </span>
+
+                </div>
+
+
+                <!-- CONTENT -->
+
+                <div class="card-content">
+
+                    <h3>
+                        {{ r.name }}
+                    </h3>
+
+                    <p class="cuisine">
+                        🍴 {{ r.cuisine }}
+                    </p>
+
+
+                    <a
+                        href="{% url 'view_menu' r.id username %}"
+                        class="menu-btn"
+                    >
+                        View Menu
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            {% empty %}
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    🍽️
+                </div>
+
+                <h3>
+                    No restaurants yet
+                </h3>
+
+                <p>
+                    Check back soon for delicious options!
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        Made with 💜 for food lovers
+
+    </footer>
+
+</div>
+
+
+</body>
+
+</html>

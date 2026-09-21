@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>MealBuddy - Login Failed</title>
+
+<link
+    rel="stylesheet"
+    href="{% static 'delivery/fail.css' %}"
+>
+
+
+</head>
+
+<body>
+
+
+<div class="page-container">
+
+
+    <!-- LOGO -->
+
+    <div class="brand">
+        🍴 MealBuddy
+    </div>
+
+
+    <!-- ERROR CARD -->
+
+    <div class="error-card">
+
+        <div class="error-icon">
+            😕
+        </div>
+
+        <span class="error-tag">
+            Login Failed
+        </span>
+
+        <h1>
+            Oops! Something went wrong 💜
+        </h1>
+
+        <p>
+            We couldn't log you in with those details.
+            Please check your username and password and try again.
+        </p>
+
+
+        <a
+            href="{% url 'open_signin' %}"
+            class="retry-btn"
+        >
+            Try Again
+            <span>→</span>
+        </a>
+
+
+        <a
+            href="/"
+            class="home-link"
+        >
+            ← Back to MealBuddy
+        </a>
+
+    </div>
+
+
+    <footer>
+        Made with 💜 for food lovers
+    </footer>
+
+
+</div>
+
+
+<script>
+
+    window.onload = function() {
+
+        alert("Login Failed");
+
+    };
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MealBuddy - My Cart</title>
+
+<link rel="stylesheet" href="{% static 'delivery/cart.css' %}">
+
+
+</head>
+
+<body>
+
+
+<div class="page-container">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+            🍴 MealBuddy
+        </div>
+
+        <div class="user">
+            Hi, <strong>{{ username }}</strong> 💜
+        </div>
+
+    </header>
+
+
+    <!-- CART TITLE -->
+
+    <section class="cart-heading">
+
+        <span class="cart-tag">
+            🛒 Your Cart
+        </span>
+
+        <h1>
+            Your delicious picks ✨
+        </h1>
+
+        <p>
+            Here are the items you've added to your cart.
+        </p>
+
+    </section>
+
+
+    <!-- CART -->
+
+    <section class="cart-card">
+
+        <div class="cart-title">
+
+            <h2>
+                Your Items 🍽️
+            </h2>
+
+            <span>
+                {{ itemList|length }} Items
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Item</th>
+
+                        <th>Name</th>
+
+                        <th>Description</th>
+
+                        <th>Price</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in itemList %}
+
+                    <tr>
+
+                        <td>
+
+                            <img
+                                src="{{ item.picture }}"
+                                alt="{{ item.name }}"
+                                class="food-image"
+                            >
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="item-name">
+                                {{ item.name }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="description">
+                                {{ item.description }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="price">
+                                ₹{{ item.price }}
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="empty"
+                        >
+
+                            🛒 Your cart is empty!
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="cart-summary">
+
+            <div>
+
+                <span class="total-label">
+                    Total Amount
+                </span>
+
+                <span class="total-note">
+                    Your delicious order total
+                </span>
+
+            </div>
+
+
+            <span class="total-price">
+                ₹{{ total_price }}
+            </span>
+
+        </div>
+
+
+        <!-- CHECKOUT -->
+
+        <form
+            action="{% url 'checkout' username %}"
+            method="get"
+        >
+
+            <button
+                type="submit"
+                class="checkout-btn"
+            >
+                CHECK OUT
+                <span>→</span>
+            </button>
+
+        </form>
+
+
+    </section>
+
+
+    <footer>
+        Made with 💜 for food lovers
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>

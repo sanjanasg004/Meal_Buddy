@@ -1,0 +1,358 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MealBuddy - Checkout</title>
+
+<link rel="stylesheet" href="{% static 'delivery/checkout.css' %}">
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+</head>
+
+<body>
+
+
+<div class="page-container">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+            🍴 MealBuddy
+        </div>
+
+        <div class="secure">
+            🔒 Secure Checkout
+        </div>
+
+    </header>
+
+
+    <!-- CHECKOUT TITLE -->
+
+    <section class="checkout-heading">
+
+        <span class="checkout-tag">
+            💳 Checkout
+        </span>
+
+        <h1>
+            Almost there, {{ username }}! 💜
+        </h1>
+
+        <p>
+            Review your order and complete your payment.
+        </p>
+
+    </section>
+
+
+    {% if error %}
+
+        <!-- ERROR -->
+
+        <div class="error-card">
+
+            <div class="error-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <h3>
+                    Something went wrong
+                </h3>
+
+                <p>
+                    {{ error }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+    {% else %}
+
+        <!-- ORDER CARD -->
+
+        <div class="checkout-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🛍️ Order Summary
+                    </h2>
+
+                    <p>
+                        Your selected delicious items
+                    </p>
+
+                </div>
+
+                <span class="item-count">
+                    {{ cart_items|length }} Items
+                </span>
+
+            </div>
+
+
+            <!-- ITEMS -->
+
+            <div class="items-list">
+
+                {% for item in cart_items %}
+
+                <div class="order-item">
+
+                    <div class="item-info">
+
+                        <div class="item-icon">
+                            🍽️
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                {{ item.name }}
+                            </h3>
+
+                            <p>
+                                Delicious MealBuddy item
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="item-price">
+                        ₹{{ item.price }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="total-section">
+
+                <div>
+
+                    <span class="total-label">
+                        Total Amount
+                    </span>
+
+                    <span class="total-subtitle">
+                        Inclusive of your selected items
+                    </span>
+
+                </div>
+
+                <span class="total-price">
+                    ₹{{ total_price }}
+                </span>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="payment-info">
+
+                <div class="payment-icon">
+                    💳
+                </div>
+
+                <div>
+
+                    <h3>
+                        Ready to pay?
+                    </h3>
+
+                    <p>
+                        You'll be redirected to Razorpay's secure payment window.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAY BUTTON -->
+
+            <button
+                id="rzp-button"
+                class="pay-button"
+                type="button"
+            >
+                Pay ₹{{ total_price }}
+                <span>→</span>
+            </button>
+
+
+            <div class="secure-note">
+                🔒 Your payment is securely processed by Razorpay
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT SUCCESS FORM -->
+
+        <form
+            id="payment-success-form"
+            method="post"
+            style="display:none;"
+        >
+
+            {% csrf_token %}
+
+            <input
+                type="hidden"
+                id="razorpay_payment_id"
+                name="razorpay_payment_id"
+            >
+
+            <input
+                type="hidden"
+                id="razorpay_order_id"
+                name="razorpay_order_id"
+            >
+
+            <input
+                type="hidden"
+                id="razorpay_signature"
+                name="razorpay_signature"
+            >
+
+        </form>
+
+
+    {% endif %}
+
+
+    <footer>
+        MealBuddy • Made with 💜 for food lovers
+    </footer>
+
+
+</div>
+
+
+{% if not error %}
+
+<script>
+
+    var payButton = document.getElementById('rzp-button');
+
+    if (!payButton || typeof Razorpay === 'undefined') {
+
+        console.error(
+            "Razorpay checkout scripts failed to load."
+        );
+
+    } else {
+
+        var options = {
+
+            "key": "{{ razorpay_key_id }}",
+
+            "amount":
+                parseInt(
+                    "{{ amount_paise|default:'0' }}",
+                    10
+                ),
+
+            "currency": "INR",
+
+            "name": "MealBuddy",
+
+            "description": "Order Payment",
+
+            "order_id": "{{ order_id }}",
+
+
+            "handler": function(response) {
+
+                window.location.href =
+                    "{% url 'payment_success' username %}";
+
+            },
+
+
+            "prefill": {
+
+                "name": "{{ username }}",
+
+                "email":
+                    "customer@example.com",
+
+                "contact":
+                    "9999999999"
+
+            },
+
+
+            "theme": {
+
+                "color": "#a855f7"
+
+            }
+
+        };
+
+
+        var rzp = new Razorpay(options);
+
+
+        rzp.on(
+            'payment.failed',
+            function() {
+
+                alert(
+                    "Payment failed or was cancelled. Please try again."
+                );
+
+            }
+        );
+
+
+        payButton.onclick = function(e) {
+
+            e.preventDefault();
+
+            rzp.open();
+
+        };
+
+    }
+
+</script>
+
+{% endif %}
+
+
+</body>
+
+</html>

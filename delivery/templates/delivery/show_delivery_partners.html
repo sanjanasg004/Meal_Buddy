@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MealBuddy - Delivery Partners</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'delivery/delivery_partner.css' %}"
+    >
+
+</head>
+
+<body>
+
+<div class="partner-page">
+
+    <div class="partner-container">
+
+        <div class="partner-header">
+
+            <div class="partner-icon">
+                🛵
+            </div>
+
+            <h1>Delivery Partners</h1>
+
+            <p>
+                Manage your MealBuddy delivery team 🚀
+            </p>
+
+            <br>
+
+            <a
+                href="{% url 'open_add_delivery_partner' %}"
+                class="secondary-link"
+            >
+                ➕ Add Delivery Partner
+            </a>
+
+        </div>
+
+
+        {% for partner in deliveryPartners %}
+
+        <div class="partner-card">
+
+            <h2>
+                🛵 {{ partner.name }}
+            </h2>
+
+            <p>
+                📱 {{ partner.mobile }}
+            </p>
+
+            <p>
+                🚗 {{ partner.vehicle_type }}
+            </p>
+
+            <p>
+                🪪 {{ partner.license_number }}
+            </p>
+
+            <p>
+                📦 Assigned Orders:
+                <strong>
+                    {{ partner.assigned_orders }}
+                </strong>
+            </p>
+
+            <p>
+                Status:
+
+                {% if partner.status == "Available" %}
+
+                    <span class="status-available">
+                        🟢 Available
+                    </span>
+
+                {% elif partner.status == "Busy" %}
+
+                    <span class="status-busy">
+                        🟠 Busy
+                    </span>
+
+                {% else %}
+
+                    <span class="status-offline">
+                        ⚫ Offline
+                    </span>
+
+                {% endif %}
+
+            </p>
+
+            <div class="partner-actions">
+
+    <a
+        href="{% url 'open_update_delivery_partner' partner.id %}"
+        class="edit-btn"
+    >
+        ✏️ Edit
+    </a>
+
+    <a
+        href="{% url 'delete_delivery_partner' partner.id %}"
+        class="delete-btn"
+        onclick="return confirm('Are you sure you want to delete {{ partner.name }}?');"
+    >
+        🗑️ Delete
+    </a>
+
+</div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="partner-card">
+
+            <h2>
+                🛵 No Delivery Partners
+            </h2>
+
+            <p>
+                Add your first delivery partner.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

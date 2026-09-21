@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MealBuddy - Add Category</title>
+
+    <link rel="stylesheet" href="{% static 'delivery/category.css' %}">
+</head>
+
+<body>
+
+<div class="category-page">
+
+    <div class="category-card">
+
+        <!-- HEADER -->
+
+        <div class="category-header">
+
+            <div class="category-icon">
+                🍔
+            </div>
+
+            <h1>Add Food Category</h1>
+
+            <p>
+                Create a new category for your MealBuddy menu ✨
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            method="POST"
+            action="{% url 'add_category' %}"
+            class="category-form"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- CATEGORY NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Category Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Pizza"
+                    required
+                >
+
+            </div>
+
+
+            <!-- IMAGE -->
+
+            <div class="form-group">
+
+                <label for="image">
+                    Image URL
+                </label>
+
+                <input
+                    type="url"
+                    id="image"
+                    name="image"
+                    placeholder="https://example.com/pizza.jpg"
+                >
+
+                <small>
+                    Add an image URL for this category
+                </small>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Describe this category..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button type="submit" class="primary-btn">
+
+                <span>➕</span>
+
+                Add Category
+
+            </button>
+
+        </form>
+
+
+        <!-- BACK LINK -->
+
+        <a
+            href="{% url 'show_categories' %}"
+            class="secondary-link"
+        >
+            📂 View Categories
+        </a>
+
+
+        <a
+            href="{% url 'signin' %}"
+            class="back-link"
+        >
+            ← Back to Admin
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

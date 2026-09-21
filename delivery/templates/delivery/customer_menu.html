@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MealBuddy - Menu</title>
+
+<link rel="stylesheet" href="{% static 'delivery/view_menu.css' %}">
+
+
+</head>
+
+<body>
+
+
+<div class="page-container">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+            🍴 MealBuddy
+        </div>
+
+        <div class="welcome">
+            Welcome, <strong>{{ username }}</strong> 💜
+        </div>
+
+        <a
+            href="{% url 'show_cart' username %}"
+            class="cart-btn"
+        >
+            🛒 Go to Cart
+        </a>
+
+    </header>
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="page-title">
+
+        <span class="tag">
+            🍽️ Today's Menu
+        </span>
+
+        <h1>
+            Pick Your Favourite! ✨
+        </h1>
+
+        <p>
+            Delicious food is just one click away.
+        </p>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section class="menu-section">
+
+        <div class="menu-grid">
+
+            {% for item in itemList %}
+
+            <div class="food-card">
+
+
+                <!-- IMAGE -->
+
+                <div class="food-image-container">
+
+                    <img
+                        src="{{ item.picture }}"
+                        alt="{{ item.name }}"
+                    >
+
+
+                    {% if item.vegeterian %}
+
+                    <span class="food-type veg">
+                        🟢 Veg
+                    </span>
+
+                    {% else %}
+
+                    <span class="food-type nonveg">
+                        🔴 Non-Veg
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- CONTENT -->
+
+                <div class="food-content">
+
+                    <h2>
+                        {{ item.name }}
+                    </h2>
+
+                    <p class="description">
+                        {{ item.description }}
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹{{ item.price }}
+                        </span>
+
+
+                        <a
+                            href="{% url 'add_to_cart' item.id username %}"
+                            class="add-btn"
+                        >
+                            + Add
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% empty %}
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    🍽️
+                </div>
+
+                <h2>
+                    No items available
+                </h2>
+
+                <p>
+                    This restaurant hasn't added any food items yet.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        Made with 💜 for food lovers
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>

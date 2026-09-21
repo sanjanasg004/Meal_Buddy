@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MealBuddy - Admin</title>
+
+    <link rel="stylesheet" href="{% static 'delivery/admin.css' %}">
+</head>
+
+<body>
+
+<div class="admin-card">
+
+    <div class="admin-icon">👩🏻‍💻</div>
+
+    <h1>Welcome, Admin! 💜</h1>
+
+    <p class="subtitle">
+        Manage your MealBuddy restaurants
+    </p>
+
+    <div class="admin-actions">
+
+        <!-- Restaurant Management -->
+
+        <a href="{% url 'open_add_restaurant' %}" class="admin-btn">
+
+            <span>➕</span>
+
+            <div>
+                <strong>Add Restaurant</strong>
+                <small>Add a new restaurant to MealBuddy</small>
+            </div>
+
+        </a>
+
+
+        <a href="{% url 'open_show_restaurant' %}" class="admin-btn">
+
+            <span>🍽️</span>
+
+            <div>
+                <strong>Show Restaurants</strong>
+                <small>View and manage restaurants</small>
+            </div>
+
+        </a>
+
+        <a
+    href="{% url 'open_add_delivery_partner' %}"
+    class="admin-btn"
+>
+    <span>🛵</span>
+
+    <div>
+        <strong>Delivery Partners</strong>
+
+        <small>
+            Manage delivery partners and their status
+        </small>
+    </div>
+</a>
+
+
+        <!-- Category Management -->
+
+        <a href="{% url 'open_add_category' %}" class="admin-btn">
+
+            <span>🍔</span>
+
+            <div>
+                <strong>Add Category</strong>
+                <small>Add a new food category</small>
+            </div>
+
+        </a>
+
+
+        <a href="{% url 'show_categories' %}" class="admin-btn">
+
+            <span>📂</span>
+
+            <div>
+                <strong>Show Categories</strong>
+                <small>View and manage food categories</small>
+            </div>
+
+        </a>
+
+        <a
+    href="{% url 'open_add_notification' %}"
+    class="admin-btn"
+>
+    <span>📢</span>
+
+    <div>
+        <strong>Notifications</strong>
+
+        <small>
+            Send offers and updates to customers
+        </small>
+    </div>
+</a>
+
+    </div>
+
+
+    <div class="footer-text">
+
+        MealBuddy Admin Panel • Made with 💜
+
+    </div>
+
+</div>
+
+</body>
+</html>

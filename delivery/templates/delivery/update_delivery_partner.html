@@ -1,0 +1,240 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MealBuddy - Update Delivery Partner</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'delivery/delivery_partner.css' %}"
+    >
+
+</head>
+
+<body>
+
+<div class="partner-page">
+
+    <div class="partner-card">
+
+        <!-- HEADER -->
+
+        <div class="partner-header">
+
+            <div class="partner-icon">
+                ✏️
+            </div>
+
+            <h1>Update Delivery Partner</h1>
+
+            <p>
+                Edit delivery partner information ✨
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            method="POST"
+            action="{% url 'update_delivery_partner' partner.id %}"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Partner Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    value="{{ partner.name }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MOBILE -->
+
+            <div class="form-group">
+
+                <label>
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    name="mobile"
+                    maxlength="10"
+                    value="{{ partner.mobile }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- VEHICLE -->
+
+            <div class="form-group">
+
+                <label>
+                    Vehicle Type
+                </label>
+
+                <select
+                    name="vehicle_type"
+                    required
+                >
+
+                    <option
+                        value="Bike"
+                        {% if partner.vehicle_type == "Bike" %}selected{% endif %}
+                    >
+                        🏍️ Bike
+                    </option>
+
+                    <option
+                        value="Scooter"
+                        {% if partner.vehicle_type == "Scooter" %}selected{% endif %}
+                    >
+                        🛵 Scooter
+                    </option>
+
+                    <option
+                        value="Car"
+                        {% if partner.vehicle_type == "Car" %}selected{% endif %}
+                    >
+                        🚗 Car
+                    </option>
+
+                    <option
+                        value="Bicycle"
+                        {% if partner.vehicle_type == "Bicycle" %}selected{% endif %}
+                    >
+                        🚲 Bicycle
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LICENSE -->
+
+            <div class="form-group">
+
+                <label>
+                    License Number
+                </label>
+
+                <input
+                    type="text"
+                    name="license_number"
+                    value="{{ partner.license_number }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ASSIGNED ORDERS -->
+
+            <div class="form-group">
+
+                <label>
+                    Assigned Orders
+                </label>
+
+                <input
+                    type="number"
+                    name="assigned_orders"
+                    min="0"
+                    value="{{ partner.assigned_orders }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    name="status"
+                    required
+                >
+
+                    <option
+                        value="Available"
+                        {% if partner.status == "Available" %}selected{% endif %}
+                    >
+                        🟢 Available
+                    </option>
+
+                    <option
+                        value="Busy"
+                        {% if partner.status == "Busy" %}selected{% endif %}
+                    >
+                        🟠 Busy
+                    </option>
+
+                    <option
+                        value="Offline"
+                        {% if partner.status == "Offline" %}selected{% endif %}
+                    >
+                        ⚫ Offline
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="primary-btn"
+            >
+                💾 Save Changes
+            </button>
+
+        </form>
+
+
+        <a
+            href="{% url 'show_delivery_partners' %}"
+            class="secondary-link"
+        >
+            ← Back to Delivery Partners
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

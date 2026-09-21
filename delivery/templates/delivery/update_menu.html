@@ -1,0 +1,378 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MealBuddy - Menu</title>
+
+    <link rel="stylesheet" href="{% static 'delivery/update_menu.css' %}">
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <div>
+            <div class="menu-icon">🍽️</div>
+
+            <h1>Restaurant Menu</h1>
+
+            <p>
+                Manage food items for your restaurant ✨
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- CURRENT MENU -->
+
+    <div class="section-card">
+
+        <div class="section-title">
+
+            <h2>📋 Current Menu</h2>
+
+            <span class="menu-count">
+                {{ itemList|length }} Items
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Item</th>
+                        <th>Category</th>
+                        <th>Picture</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Type</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in itemList %}
+
+                    <tr>
+
+                        <!-- ITEM -->
+
+                        <td>
+                            <span class="item-name">
+                                {{ item.name }}
+                            </span>
+                        </td>
+
+
+                        <!-- CATEGORY -->
+
+                        <td>
+
+                            {% if item.category %}
+
+                                <span class="category-badge">
+                                    {{ item.category.name }}
+                                </span>
+
+                            {% else %}
+
+                                <span class="no-category">
+                                    No Category
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- PICTURE -->
+
+                        <td>
+
+                            <img
+                                src="{{ item.picture }}"
+                                alt="{{ item.name }}"
+                                class="food-image"
+                            >
+
+                        </td>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <td>
+
+                            <span class="description">
+                                {{ item.description }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- PRICE -->
+
+                        <td>
+
+                            <span class="price">
+                                ₹{{ item.price }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- TYPE -->
+
+                        <td>
+
+                            {% if item.vegeterian %}
+
+                                <span class="veg-badge">
+                                    🟢 Veg
+                                </span>
+
+                            {% else %}
+
+                                <span class="nonveg-badge">
+                                    🔴 Non-Veg
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="6" class="empty">
+
+                            🍽️ No menu items added yet.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADD MENU ITEM -->
+
+    <div class="form-card">
+
+        <div class="form-header">
+
+            <div class="form-icon">
+                ➕
+            </div>
+
+            <div>
+
+                <h2>Add Menu Item</h2>
+
+                <p>
+                    Add a delicious new item to your menu
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form
+            action="{% url 'update_menu' restaurant.id %}"
+            method="post"
+        >
+
+            {% csrf_token %}
+
+
+            <div class="form-grid">
+
+
+                <!-- ITEM NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Item Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="e.g. Paneer Butter Masala"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PRICE -->
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        step="0.01"
+                        placeholder="₹ 0.00"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Food Category
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category"
+                        required
+                    >
+
+                        <option
+                            value=""
+                            disabled
+                            selected
+                        >
+                            Select a category
+                        </option>
+
+                        {% for category in categoryList %}
+
+                            <option value="{{ category.id }}">
+                                {{ category.name }}
+                            </option>
+
+                        {% empty %}
+
+                            <option disabled>
+                                No categories available
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group full-width">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Describe the food item..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- PICTURE -->
+
+                <div class="form-group full-width">
+
+                    <label for="picture">
+                        Image URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="picture"
+                        name="picture"
+                        placeholder="https://example.com/food.jpg"
+                    >
+
+                </div>
+
+
+                <!-- VEGETARIAN -->
+
+                <div class="vegetarian-option">
+
+                    <input
+                        type="checkbox"
+                        id="vegeterian"
+                        name="vegeterian"
+                    >
+
+                    <label for="vegeterian">
+                        🥗 Vegetarian Item
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+            <button type="submit">
+                ADD ITEM 🍴
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <a
+        href="{% url 'open_show_restaurant' %}"
+        class="back-link"
+    >
+        ← Back to Restaurants
+    </a>
+
+</div>
+
+</body>
+
+</html>

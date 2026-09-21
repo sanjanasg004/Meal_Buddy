@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #f8f3ff,
+        #eee5ff,
+        #faf7ff
+    );
+
+    min-height: 100vh;
+    color: #30243d;
+}
+
+.partner-page {
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+
+.partner-card {
+    max-width: 650px;
+    margin: auto;
+
+    background: rgba(255,255,255,0.96);
+
+    padding: 45px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 45px rgba(107,78,139,0.15);
+
+    border: 1px solid #eadff3;
+}
+
+.partner-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.partner-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: auto;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+
+    background: #f0e5ff;
+
+    border-radius: 24px;
+}
+
+.partner-header h1 {
+    color: #4c3265;
+    font-size: 31px;
+    margin-bottom: 8px;
+}
+
+.partner-header p {
+    color: #8b7899;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #594269;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #dfd2eb;
+
+    border-radius: 14px;
+
+    background: #fcfaff;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #a678c9;
+
+    box-shadow:
+        0 0 0 4px rgba(166,120,201,0.12);
+}
+
+.primary-btn {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #8e5bb7,
+        #b07ad4
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    transition: 0.25s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(142,91,183,0.3);
+}
+
+.secondary-link {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background: #f5edff;
+
+    color: #704595;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.secondary-link:hover {
+    background: #eadcff;
+}
+
+.partner-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.partner-container .partner-header {
+    margin-bottom: 30px;
+}
+
+.partner-container .partner-card {
+    margin-bottom: 20px;
+}
+
+.partner-card h2 {
+    color: #4c3265;
+    margin-bottom: 15px;
+}
+
+.partner-card p {
+    color: #75657f;
+    margin: 10px 0;
+}
+
+.status-available {
+    color: #31845d;
+    background: #e5f8ed;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.status-busy {
+    color: #b56a24;
+    background: #fff0d9;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.status-offline {
+    color: #666;
+    background: #eeeeee;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* =========================================
+   PARTNER ACTIONS
+   ========================================= */
+
+.partner-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.edit-btn,
+.delete-btn {
+    flex: 1;
+    text-align: center;
+    padding: 11px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.edit-btn {
+    background: #f0e5ff;
+    color: #704595;
+}
+
+.edit-btn:hover {
+    background: #e2d0f7;
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background: #fff0f1;
+    color: #b34d59;
+}
+
+.delete-btn:hover {
+    background: #ffdfe2;
+    transform: translateY(-2px);
+}

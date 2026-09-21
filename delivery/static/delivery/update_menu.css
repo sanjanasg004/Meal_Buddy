@@ -1,0 +1,805 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    min-height: 100vh;
+
+    padding: 40px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7efff,
+            #efe3ff,
+            #e8dbff
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND BLOBS
+========================= */
+
+body::before,
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    z-index: -1;
+}
+
+
+body::before {
+
+    background: #d8b4fe;
+
+    top: -150px;
+    left: -130px;
+}
+
+
+body::after {
+
+    background: #c084fc;
+
+    bottom: -150px;
+    right: -130px;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page-container {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    animation: fadeIn 0.8s ease;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+
+    margin-bottom: 25px;
+}
+
+
+.menu-icon {
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    background: #f1e6ff;
+
+    border-radius: 20px;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 8px 20px rgba(168, 85, 247, 0.15);
+}
+
+
+h1 {
+
+    color: #6f42c1;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+
+.page-header p {
+
+    color: #806f96;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   COMMON CARD
+========================= */
+
+.section-card,
+.form-card {
+
+    background: rgba(255, 255, 255, 0.68);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(123, 97, 255, 0.15);
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   CURRENT MENU
+========================= */
+
+.section-card {
+
+    padding: 15px;
+}
+
+
+.section-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+}
+
+
+.section-title h2 {
+
+    color: #6f42c1;
+
+    font-size: 20px;
+
+    font-weight: 600;
+}
+
+
+.menu-count {
+
+    background: #f1e6ff;
+
+    color: #8050b5;
+
+    padding: 7px 14px;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 18px;
+}
+
+
+table {
+
+    width: 100%;
+
+    min-width: 800px;
+
+    border-collapse: collapse;
+}
+
+
+/* TABLE HEADER */
+
+thead {
+
+    background:
+        linear-gradient(
+            135deg,
+            #a855f7,
+            #c084fc
+        );
+
+    color: white;
+}
+
+
+th {
+
+    padding: 16px;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* TABLE BODY */
+
+tbody tr {
+
+    background: rgba(255, 255, 255, 0.55);
+
+    border-bottom: 1px solid #eee5f7;
+
+    transition: 0.3s ease;
+}
+
+
+tbody tr:hover {
+
+    background: #faf7ff;
+
+    transform: scale(1.002);
+}
+
+
+td {
+
+    padding: 14px 16px;
+
+    color: #655477;
+
+    font-size: 12px;
+
+    vertical-align: middle;
+}
+
+
+/* ITEM NAME */
+
+.item-name {
+
+    color: #6541a1;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* IMAGE */
+
+.food-image {
+
+    width: 75px;
+
+    height: 60px;
+
+    object-fit: cover;
+
+    border-radius: 13px;
+
+    border: 3px solid #f1e6ff;
+
+    box-shadow:
+        0 5px 12px rgba(120, 80, 170, 0.15);
+
+    transition: 0.3s ease;
+}
+
+
+.food-image:hover {
+
+    transform: scale(1.08);
+}
+
+
+/* DESCRIPTION */
+
+.description {
+
+    display: block;
+
+    max-width: 260px;
+
+    color: #817391;
+
+    line-height: 1.5;
+}
+
+
+/* PRICE */
+
+.price {
+
+    color: #6541a1;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* VEG */
+
+.veg-badge {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 50px;
+
+    background: #e4f8ef;
+
+    color: #36825f;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* NON VEG */
+
+.nonveg-badge {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 50px;
+
+    background: #ffe5eb;
+
+    color: #d04a69;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* EMPTY */
+
+.empty {
+
+    text-align: center;
+
+    padding: 45px !important;
+
+    color: #9889a7;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ADD ITEM FORM
+========================= */
+
+.form-card {
+
+    padding: 30px;
+}
+
+
+.form-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.form-icon {
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #f1e6ff;
+
+    border-radius: 16px;
+
+    font-size: 22px;
+}
+
+
+.form-header h2 {
+
+    color: #6f42c1;
+
+    font-size: 20px;
+
+    margin-bottom: 3px;
+}
+
+
+.form-header p {
+
+    color: #9183a1;
+
+    font-size: 12px;
+}
+
+
+/* FORM GRID */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.full-width {
+
+    grid-column: span 2;
+}
+
+
+/* LABEL */
+
+.form-group label {
+
+    color: #6d5c87;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+}
+
+
+/* INPUT */
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 2px solid transparent;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #f9f6ff;
+
+    color: #4b3b5f;
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+
+/* TEXTAREA */
+
+.form-group textarea {
+
+    height: 95px;
+
+    resize: vertical;
+}
+
+
+/* PLACEHOLDER */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #aaa0b8;
+}
+
+
+/* FOCUS */
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color: #b57cff;
+
+    background: white;
+
+    box-shadow:
+        0 0 15px rgba(181, 124, 255, 0.25);
+}
+
+
+/* =========================
+   VEGETARIAN
+========================= */
+
+.vegetarian-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    grid-column: span 2;
+
+    padding: 13px 15px;
+
+    background: #f3fff8;
+
+    border-radius: 14px;
+
+    border: 1px solid #d9f3e5;
+}
+
+
+.vegetarian-option input {
+
+    width: 17px;
+    height: 17px;
+
+    accent-color: #6fbd8f;
+
+    cursor: pointer;
+}
+
+
+.vegetarian-option label {
+
+    color: #36825f;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a855f7,
+            #c084fc
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 20px rgba(168, 85, 247, 0.3);
+
+    transition: 0.35s ease;
+}
+
+
+button:hover {
+
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #9333ea,
+            #b56cff
+        );
+
+    box-shadow:
+        0 15px 28px rgba(168, 85, 247, 0.4);
+}
+
+
+button:active {
+
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   BACK LINK
+========================= */
+
+.back-link {
+
+    display: block;
+
+    width: fit-content;
+
+    margin: 25px auto 0;
+
+    color: #8050b5;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    transition: 0.3s ease;
+}
+
+
+.back-link:hover {
+
+    color: #6f42c1;
+
+    transform: translateX(-3px);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(25px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+
+        padding: 25px 15px;
+    }
+
+
+    h1 {
+
+        font-size: 25px;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .full-width {
+
+        grid-column: span 1;
+    }
+
+
+    .vegetarian-option {
+
+        grid-column: span 1;
+    }
+
+
+    .section-title {
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
+
+
+    .form-card {
+
+        padding: 25px 20px;
+    }
+
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #f0e6ff;
+    color: #7b4ab5;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.no-category {
+    color: #999;
+    font-size: 13px;
+}

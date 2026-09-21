@@ -1,0 +1,508 @@
+/* =========================================
+   MEALBUDDY CATEGORY PAGES
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #f8f3ff,
+        #eee5ff,
+        #faf7ff
+    );
+    color: #30243d;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.category-page {
+    min-height: 100vh;
+    padding: 50px 25px;
+}
+
+
+/* =========================================
+   ADD CATEGORY CARD
+   ========================================= */
+
+.category-card {
+    width: 100%;
+    max-width: 650px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 45px;
+    border-radius: 28px;
+    box-shadow: 0 15px 45px rgba(107, 78, 139, 0.15);
+    border: 1px solid rgba(170, 140, 210, 0.2);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.category-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.category-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0e5ff;
+    border-radius: 22px;
+    font-size: 38px;
+    box-shadow: 0 8px 20px rgba(126, 87, 170, 0.12);
+}
+
+.category-header h1 {
+    font-size: 32px;
+    color: #4c3265;
+    margin-bottom: 8px;
+}
+
+.category-header p {
+    color: #8b7899;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.category-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #594269;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #dfd2eb;
+    border-radius: 14px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fcfaff;
+    transition: 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #a678c9;
+    box-shadow: 0 0 0 4px rgba(166, 120, 201, 0.12);
+    background: #ffffff;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group small {
+    color: #9b8ba6;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PRIMARY BUTTON
+   ========================================= */
+
+.primary-btn {
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    background: linear-gradient(
+        135deg,
+        #8e5bb7,
+        #b07ad4
+    );
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 8px 20px rgba(142, 91, 183, 0.25);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(142, 91, 183, 0.32);
+}
+
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+.secondary-link {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    padding: 13px;
+    border-radius: 14px;
+    background: #f5edff;
+    color: #704595;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.secondary-link:hover {
+    background: #eadcff;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #8c7898;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    color: #704595;
+}
+
+
+/* =========================================
+   CATEGORIES CONTAINER
+   ========================================= */
+
+.categories-container {
+    max-width: 1150px;
+    margin: auto;
+}
+
+
+/* =========================================
+   CATEGORIES HEADER
+   ========================================= */
+
+.categories-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.categories-header .category-icon {
+    margin: 0 0 15px;
+}
+
+.categories-header h1 {
+    font-size: 36px;
+    color: #4c3265;
+    margin-bottom: 8px;
+}
+
+.categories-header p {
+    color: #8b7899;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   ADD CATEGORY BUTTON
+   ========================================= */
+
+.add-category-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 20px;
+    border-radius: 14px;
+    background: #8e5bb7;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(142, 91, 183, 0.2);
+    transition: 0.25s ease;
+}
+
+.add-category-btn:hover {
+    transform: translateY(-2px);
+    background: #794ba0;
+}
+
+
+/* =========================================
+   CATEGORY GRID
+   ========================================= */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================================
+   CATEGORY ITEM
+   ========================================= */
+
+.category-card-item {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(170, 140, 210, 0.18);
+    box-shadow: 0 10px 30px rgba(107, 78, 139, 0.1);
+    transition: 0.3s ease;
+}
+
+.category-card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 38px rgba(107, 78, 139, 0.17);
+}
+
+
+/* =========================================
+   CATEGORY IMAGE
+   ========================================= */
+
+.category-image-wrapper {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background: #f3ebff;
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.category-card-item:hover .category-image {
+    transform: scale(1.05);
+}
+
+.category-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+}
+
+
+/* =========================================
+   CATEGORY CONTENT
+   ========================================= */
+
+.category-content {
+    padding: 22px;
+}
+
+.category-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.category-title-row h2 {
+    font-size: 21px;
+    color: #4c3265;
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.status {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.status.active {
+    color: #31845d;
+    background: #e5f8ed;
+}
+
+.status.inactive {
+    color: #a65353;
+    background: #fdeaea;
+}
+
+
+/* =========================================
+   DESCRIPTION
+   ========================================= */
+
+.category-description {
+    min-height: 42px;
+    color: #8a7b93;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+   ========================================= */
+
+.category-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.edit-btn {
+    color: #704595;
+    background: #f0e5ff;
+}
+
+.edit-btn:hover {
+    background: #e5d5fa;
+}
+
+.delete-btn {
+    color: #b34d59;
+    background: #fff0f1;
+}
+
+.delete-btn:hover {
+    background: #ffe0e3;
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 70px 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(107, 78, 139, 0.1);
+}
+
+.empty-state > div {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.empty-state h2 {
+    color: #4c3265;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #8b7899;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.category-footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #9a8ca5;
+    font-size: 13px;
+}
+
+.category-footer a {
+    color: #704595;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .category-page {
+        padding: 25px 15px;
+    }
+
+    .category-card {
+        padding: 28px 22px;
+    }
+
+    .categories-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .categories-header h1 {
+        font-size: 29px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-category-btn {
+        width: 100%;
+    }
+
+}

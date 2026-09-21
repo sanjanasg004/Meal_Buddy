@@ -1,0 +1,158 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#f7efff,#efe3ff,#e8dbff);
+    overflow:auto;
+}
+
+/* Background Blobs */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(110px);
+    z-index:-1;
+}
+
+body::before{
+    background:#d8b4fe;
+    top:-120px;
+    left:-100px;
+}
+
+body::after{
+    background:#c084fc;
+    bottom:-120px;
+    right:-100px;
+}
+
+/* Card */
+
+.container{
+    width:430px;
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(18px);
+    padding:40px;
+    border-radius:28px;
+    box-shadow:0 20px 45px rgba(140,90,255,.18);
+    border:1px solid rgba(255,255,255,.4);
+    animation:fadeIn .8s ease;
+}
+
+h2{
+    text-align:center;
+    color:#6f42c1;
+    margin-bottom:8px;
+    font-size:30px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#7d6b9a;
+    margin-bottom:30px;
+    font-size:15px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    margin-bottom:8px;
+    margin-top:15px;
+    color:#6d5c87;
+    font-weight:500;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:#f9f6ff;
+    font-size:15px;
+    transition:.3s;
+    border:2px solid transparent;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+input:focus,
+textarea:focus{
+    border:2px solid #b57cff;
+    background:white;
+    box-shadow:0 0 15px rgba(181,124,255,.25);
+}
+
+button{
+    margin-top:30px;
+    padding:15px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#a855f7,#c084fc);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.35s;
+    letter-spacing:1px;
+    box-shadow:0 10px 20px rgba(168,85,247,.3);
+}
+
+button:hover{
+    transform:translateY(-4px);
+    background:linear-gradient(135deg,#9333ea,#b56cff);
+    box-shadow:0 15px 28px rgba(168,85,247,.4);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+
+    .container{
+        width:90%;
+        padding:30px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+}

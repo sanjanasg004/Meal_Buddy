@@ -1,0 +1,137 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#f5edff,#efe4ff,#e7dcff);
+    overflow:hidden;
+}
+
+/* Decorative Blobs */
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(100px);
+    z-index:-1;
+}
+
+body::before{
+    background:#d9b8ff;
+    top:-120px;
+    left:-100px;
+}
+
+body::after{
+    background:#c8a6ff;
+    bottom:-120px;
+    right:-100px;
+}
+
+/* Main Card */
+.container{
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    padding:50px 45px;
+    width:420px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(123,97,255,0.18);
+    border:1px solid rgba(255,255,255,0.5);
+    animation:fadeIn 1s ease;
+}
+
+h3{
+    color:#6a3dbf;
+    font-size:32px;
+    margin-bottom:12px;
+    font-weight:700;
+}
+
+h6{
+    color:#6d6280;
+    font-size:15px;
+    margin-top:20px;
+    margin-bottom:18px;
+    font-weight:500;
+}
+
+/* Buttons */
+a{
+    display:inline-block;
+    text-decoration:none;
+    background:linear-gradient(135deg,#a66cff,#c084fc);
+    color:white;
+    padding:14px 38px;
+    border-radius:50px;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:1px;
+    transition:0.35s;
+    box-shadow:0 8px 20px rgba(166,108,255,.35);
+}
+
+a:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 15px 30px rgba(166,108,255,.45);
+    background:linear-gradient(135deg,#9657ff,#b56cff);
+}
+
+a:active{
+    transform:scale(.96);
+}
+
+br{
+    display:block;
+    margin:20px 0;
+}
+
+/* Floating Animation */
+.container:hover{
+    transform:translateY(-4px);
+    transition:.4s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+@media(max-width:500px){
+
+    .container{
+        width:90%;
+        padding:40px 25px;
+    }
+
+    h3{
+        font-size:26px;
+    }
+
+    a{
+        width:100%;
+    }
+
+}
+

@@ -1,0 +1,207 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MealBuddy - Order Successful</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(
+                135deg,
+                #f8f3ff,
+                #eee5ff
+            );
+
+            padding: 20px;
+        }
+
+        .success-card {
+            width: 100%;
+            max-width: 520px;
+
+            background: white;
+
+            padding: 45px;
+
+            text-align: center;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 20px 50px rgba(100, 70, 130, 0.15);
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+
+            margin: auto;
+            margin-bottom: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 48px;
+
+            background: #eee2ff;
+
+            border-radius: 50%;
+        }
+
+        h1 {
+            color: #56386d;
+
+            margin-bottom: 10px;
+        }
+
+        .message {
+            color: #806f8b;
+
+            margin-bottom: 25px;
+
+            line-height: 1.6;
+        }
+
+        .order-info {
+            background: #faf7ff;
+
+            border: 1px solid #eadff4;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+
+            text-align: left;
+        }
+
+        .order-info p {
+            margin: 10px 0;
+
+            color: #65516f;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            background: #fff1cf;
+
+            color: #9a6c17;
+
+            font-weight: 700;
+
+            font-size: 13px;
+        }
+
+        .orders-btn {
+            display: block;
+
+            padding: 14px;
+
+            background: #8c5bb5;
+
+            color: white;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        .orders-btn:hover {
+            background: #75499b;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="success-card">
+
+    <div class="success-icon">
+        🎉
+    </div>
+
+    <h1>
+        Order Placed!
+    </h1>
+
+    <p class="message">
+        Thank you {{ username }}! 💜
+        Your order has been placed successfully.
+    </p>
+
+    <div class="order-info">
+
+        <p>
+            <strong>Order ID:</strong>
+            #{{ order.id }}
+        </p>
+
+        <p>
+            <strong>Total:</strong>
+            ₹{{ order.total_price }}
+        </p>
+
+        <p>
+            <strong>Delivery Address:</strong>
+            {{ order.delivery_address }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+
+            <span class="status">
+                🟡 {{ order.status }}
+            </span>
+
+        </p>
+
+    </div>
+
+    <a
+        href="{% url 'orders' username %}"
+        class="orders-btn"
+    >
+        📦 View My Orders
+    </a>
+
+</div>
+
+</body>
+
+</html>
